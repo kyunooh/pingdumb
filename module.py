@@ -1,5 +1,6 @@
 import json
 import smtplib
+import getpass
 from email.mime.text import MIMEText
 from os.path import isfile, sep
 from urllib2 import urlopen
@@ -70,6 +71,8 @@ def read_config():
 
 
 def write_config(conf):
+    if 'smtpPw' in conf:
+        del conf['smtpPw']
     f_path = "." + sep + "pingdumb.json"
     f = open(f_path, 'w')
     f.truncate()
@@ -86,29 +89,29 @@ def input_conf(message, default):
 def set_config():
     configure = read_config()
     url_for_test = input_conf(
-    "URL to test? (" + configured["url"] + ")", configured["url"]
+    "URL to test? (" + configure["url"] + ")", configure["url"]
         )
     url_for_test = url_type(url_for_test)
 
     recv_mail = input_conf(
-        "Receive mail? (" + configured["toEmail"] + ")",
-        configured["toEmail"]
+        "Receive mail? (" + configure["toEmail"] + ")",
+        configure["toEmail"]
     )
 
     s_server = input_conf(
-        "SMTP server? (" + configured["smtpServer"] + ")",
-        configured["smtpServer"]
+        "SMTP server? (" + configure["smtpServer"] + ")",
+        configure["smtpServer"]
     )
     s_user = input_conf(
-        "SMTP Server username? (" + configured["smtpUser"] + ")",
-        configured["smtpUser"]
+        "SMTP Server username? (" + configure["smtpUser"] + ")",
+        configure["smtpUser"]
     )
     s_pw = getpass.getpass("SMTP Server password?", "")
 
-    configured["url"] = url_for_test
-    configured["toEmail"] = recv_mail
+    configure["url"] = url_for_test
+    configure["toEmail"] = recv_mail
 
-    configured["smtpServer"] = s_server
-    configured["smtpUser"] = s_user
-
+    configure["smtpServer"] = s_server
+    configure["smtpUser"] = s_user
+    configure["smtpPw"] = s_pw
     return configure
