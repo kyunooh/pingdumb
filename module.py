@@ -77,6 +77,7 @@ def write_config(conf):
     f = open(f_path, 'w')
     f.truncate()
     f.write(json.dumps(conf))
+    f.close()
 
 
 def input_conf(message, default):
