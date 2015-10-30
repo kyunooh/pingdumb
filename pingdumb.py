@@ -10,7 +10,7 @@ if __name__ == "__main__":
 
     if len(sys.argv) == 1:
         configured = set_config()
-
+        s_pw = configured["smtpPw"]
     else:
         configured = read_config()
         s_pw = sys.argv[1]
