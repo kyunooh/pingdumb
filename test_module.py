@@ -2,7 +2,7 @@ import unittest
 
 import mock
 
-from module import get_status, input_conf, read_config, url_type, write_config
+from module import get_status, input_conf, read_config, url_type, write_config, set_config
 
 
 class TestModule(unittest.TestCase):
@@ -48,3 +48,14 @@ class TestModule(unittest.TestCase):
         with mock.patch("__builtin__.raw_input", return_value="test"):
             self.assertEquals("test", input_conf(
                 "Please write 'test'", conf["url"]))
+
+    def test_set_config(self):
+        expected_conf = {
+            "url": "abc",
+            "smtpServer": "abc",
+            "smtpUser": "abc",
+            "toEmail": "abc",
+        }
+            
+        with mock.patch("__buildin__.raw_input", return_value="abc"):
+            self.assertEquals(expected_conf, set_config())

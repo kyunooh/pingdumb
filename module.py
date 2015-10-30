@@ -81,3 +81,34 @@ def input_conf(message, default):
     if not value:
         return default
     return value
+
+
+def set_config():
+    configure = read_config()
+    url_for_test = input_conf(
+    "URL to test? (" + configured["url"] + ")", configured["url"]
+        )
+    url_for_test = url_type(url_for_test)
+
+    recv_mail = input_conf(
+        "Receive mail? (" + configured["toEmail"] + ")",
+        configured["toEmail"]
+    )
+
+    s_server = input_conf(
+        "SMTP server? (" + configured["smtpServer"] + ")",
+        configured["smtpServer"]
+    )
+    s_user = input_conf(
+        "SMTP Server username? (" + configured["smtpUser"] + ")",
+        configured["smtpUser"]
+    )
+    s_pw = getpass.getpass("SMTP Server password?", "")
+
+    configured["url"] = url_for_test
+    configured["toEmail"] = recv_mail
+
+    configured["smtpServer"] = s_server
+    configured["smtpUser"] = s_user
+
+    return configure
