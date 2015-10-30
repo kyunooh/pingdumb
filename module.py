@@ -64,7 +64,7 @@ def read_config():
         f.close()
         return conf
     else:
-        f = open(f_path, 'w')
+        f = open(f_path, 'r+b')
         conf = json.loads(f.read())
         f.close()
         return conf
