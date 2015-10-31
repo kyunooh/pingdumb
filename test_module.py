@@ -2,7 +2,8 @@ import unittest
 
 import mock
 
-from module import get_status, input_conf, read_config, url_type, write_config, set_config
+from module import get_status, input_conf, read_config, url_type, \
+    write_config, set_config
 
 
 class TestModule(unittest.TestCase):
@@ -41,7 +42,7 @@ class TestModule(unittest.TestCase):
         }
 
         write_config(conf)
-                                       
+
         with mock.patch("__builtin__.raw_input", return_value=""):
             self.assertEquals(conf["url"], input_conf(
                 "Please just enter", conf["url"]))
@@ -57,12 +58,15 @@ class TestModule(unittest.TestCase):
             "toEmail": "abc",
             "smtpPw": "Password",
         }
-            
+
         with mock.patch("__builtin__.raw_input", return_value="abc"):
             with mock.patch("getpass.getpass", return_value="Password"):
                 self.assertEquals(expected_conf["url"], set_config()["url"])
-                self.assertEquals(expected_conf["smtpServer"], set_config()["smtpServer"])
-                self.assertEquals(expected_conf["smtpUser"], set_config()["smtpUser"])
-                self.assertEquals(expected_conf["toEmail"], set_config()["toEmail"])
-                self.assertEquals(expected_conf["smtpPw"], set_config()["smtpPw"])
-                
+                self.assertEquals(
+                    expected_conf["smtpServer"], set_config()["smtpServer"])
+                self.assertEquals(
+                    expected_conf["smtpUser"], set_config()["smtpUser"])
+                self.assertEquals(
+                    expected_conf["toEmail"], set_config()["toEmail"])
+                self.assertEquals(
+                    expected_conf["smtpPw"], set_config()["smtpPw"])
