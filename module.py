@@ -44,7 +44,7 @@ def form_msg(text, to):
 
 
 def url_type(url):
-    if not "://" in url:
+    if "://" not in url:
         return "http://" + url
     else:
         return url
