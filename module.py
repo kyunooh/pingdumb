@@ -90,8 +90,8 @@ def input_conf(message, default):
 def set_config():
     configure = read_config()
     url_for_test = input_conf(
-    "URL to test? (" + configure["url"] + ")", configure["url"]
-        )
+        "URL to test? (" + configure["url"] + ")", configure["url"]
+    )
     url_for_test = url_type(url_for_test)
 
     recv_mail = input_conf(
@@ -116,3 +116,10 @@ def set_config():
     configure["smtpUser"] = s_user
     configure["smtpPw"] = s_pw
     return configure
+
+
+def configure_to_tuple():
+    configure = read_config()
+
+    return configure["url"], configure["smtpServer"], \
+        configure["smtpUser"], configure["toEmail"],

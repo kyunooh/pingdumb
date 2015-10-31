@@ -71,12 +71,12 @@ class TestModule(unittest.TestCase):
                 self.assertEquals(
                     expected_conf["smtpPw"], set_config()["smtpPw"])
 
-    def test_configure_to_tuple():
+    def test_configure_to_tuple(self):
         expected_conf = {
             "url": "http://abc",
-            "smtpServer": "abc",
-            "smtpUser": "abc",
-            "toEmail": "abc",
+            "smtpServer": "smtpServernnabcde",
+            "smtpUser": "smtpUserarst",
+            "toEmail": "toEmailabc",
         }
 
         exp_url = expected_conf["url"]
@@ -84,11 +84,11 @@ class TestModule(unittest.TestCase):
         exp_smtp_user = expected_conf["smtpUser"]
         exp_to_email = expected_conf["toEmail"]
 
-        act_url, act_smtp_server, act_smtp_user, act_smtp_email \
-            = configure_to_tuple()
-
-        self.assertEquals(exp_url, act_url)
-        self.assertEquals(exp_smtp_server, act_smtp_server)
-        self.assertEquals(exp_smtp_user, act_smtp_user)
-        self.assertEquals(exp_to_email, act_smtp_email)
+        with mock.patch("module.read_config", return_value=expected_conf):
+            act_url, act_smtp_server, act_smtp_user, act_smtp_email \
+                = configure_to_tuple()
+            self.assertEquals(exp_url, act_url)
+            self.assertEquals(exp_smtp_server, act_smtp_server)
+            self.assertEquals(exp_smtp_user, act_smtp_user)
+            self.assertEquals(exp_to_email, act_smtp_email)
         
