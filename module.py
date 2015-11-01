@@ -116,3 +116,10 @@ def set_config():
     configure["smtpUser"] = s_user
     configure["smtpPw"] = s_pw
     return configure
+
+
+def configure_to_tuple():
+    configure = read_config()
+
+    return configure["url"], configure["smtpServer"], \
+        configure["smtpUser"], configure["toEmail"]
