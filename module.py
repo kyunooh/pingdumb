@@ -122,4 +122,4 @@ def configure_to_tuple():
     configure = read_config()
 
     return configure["url"], configure["smtpServer"], \
-        configure["smtpUser"], configure["toEmail"],
+        configure["smtpUser"], configure["toEmail"]
