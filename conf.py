@@ -1,55 +1,9 @@
-import datetime
 import getpass
 import json
-import smtplib
-import time
-from email.mime.text import MIMEText
-from os.path import isfile, sep
-from urllib2 import urlopen
+from genericpath import isfile
+from os.path import sep
 
-
-def get_status(url):
-    try:
-        f = urlopen(url)
-    except IOError:
-        return "IOError: can't connect"
-    return f.getcode()
-
-
-def send_email(s, msg):
-    s.sendmail(msg["From"], msg["To"], msg.as_string())
-    s.quit()
-
-
-def smtp_login_test(server, username, password):
-    s = smtplib.SMTP('smtp.gmail.com:587')
-    s.starttls()
-    s.login(username, password)
-    s.quit()
-    print("SMTP Login Success!!")
-
-
-def smtp_login(server, username, password):
-    s = smtplib.SMTP(server)
-    s.starttls()
-    s.login(username, password)
-    return s
-
-
-def form_msg(text, to):
-    our_application = "pingdumb"
-    msg = MIMEText(text, _subtype="plain", _charset="utf-8")
-    msg['Subject'] = 'The contents of %s' % text
-    msg['From'] = our_application
-    msg['To'] = to
-    return msg
-
-
-def url_type(url):
-    if "://" not in url:
-        return "http://" + url
-    else:
-        return url
+from main_module import url_type
 
 
 def read_config():
@@ -125,32 +79,3 @@ def configure_to_tuple():
 
     return configure["url"], configure["smtpServer"], \
         configure["smtpUser"], configure["toEmail"]
-
-
-def print_status(status, st):
-    print(st + " | Status is " + status)
-
-
-def checker(url_for_test, conf):
-    while(True):
-        status = get_status(url_for_test)
-        st = get_strftime()
-        print_status(status, st)
-        if status != 200:
-            msg = form_msg(st + "\nHttp status is " + status, conf["toEmail"])
-            send_status_mail(conf, msg)
-        time.sleep(300)
-
-def get_strftime():
-    ts = time.time()
-    return datetime.datetime.fromtimestamp(ts). \
-        strftime('%Y-%m-%d %H:%M:%S')
-
-def smtp_login_with_conf(conf):
-    s = smtp_login(conf["smtpServer"], conf["smtpUser"], conf["smtpPw"])
-
-
-def send_status_mail(conf, msg):
-    s = smtp_login_with_conf(conf)
-    send_email(s, msg)
-    s.quit()

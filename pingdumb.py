@@ -2,8 +2,10 @@ import datetime
 import sys
 import time
 
-from module import form_msg, get_status, send_email, set_config, \
-    smtp_login, smtp_login_test, write_config, configure_to_tuple, checker
+from main_module import form_msg, get_status, set_config, \
+    smtp_login, smtp_login_test, configure_to_tuple, checker
+from smtp_module import send_email, smtp_login_test, smtp_login, form_msg
+from conf import write_config, set_config, configure_to_tuple
 
 if __name__ == "__main__":
 
