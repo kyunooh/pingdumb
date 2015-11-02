@@ -127,21 +127,30 @@ def configure_to_tuple():
         configure["smtpUser"], configure["toEmail"]
 
 
-def print_status_and_send_mail(status, st):
+def print_status(status, st):
     print(st + " | Status is " + status)
-    s = smtp_login(s_server, s_user, s_pw)
-    msg = form_msg(st + "\nHttp status is " + status, recv_mail)
-    send_email(s, msg)
 
 
-def main_method(url_for_test):
+def checker(url_for_test, conf):
     while(True):
         status = get_status(url_for_test)
-        ts = time.time()
-        st = datetime.datetime.fromtimestamp(ts). \
-            strftime('%Y-%m-%d %H:%M:%S')
+        st = get_strftime()
+        print_status(status, st)
         if status != 200:
-            print_status_and_send_mail(status, st)
-        else:
-            print(st + " | Is OK")
+            msg = form_msg(st + "\nHttp status is " + status, conf["toEmail"])
+            send_status_mail(conf, msg)
         time.sleep(300)
+
+def get_strftime():
+    ts = time.time()
+    return datetime.datetime.fromtimestamp(ts). \
+        strftime('%Y-%m-%d %H:%M:%S')
+
+def smtp_login_with_conf(conf):
+    s = smtp_login(conf["smtpServer"], conf["smtpUser"], conf["smtpPw"])
+
+
+def send_status_mail(conf, msg):
+    s = smtp_login_with_conf(conf)
+    send_email(s, msg)
+    s.quit()
