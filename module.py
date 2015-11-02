@@ -1,6 +1,8 @@
+import datetime
+import getpass
 import json
 import smtplib
-import getpass
+import time
 from email.mime.text import MIMEText
 from os.path import isfile, sep
 from urllib2 import urlopen
@@ -123,3 +125,23 @@ def configure_to_tuple():
 
     return configure["url"], configure["smtpServer"], \
         configure["smtpUser"], configure["toEmail"]
+
+
+def print_status_and_send_mail(status, st):
+    print(st + " | Status is " + status)
+    s = smtp_login(s_server, s_user, s_pw)
+    msg = form_msg(st + "\nHttp status is " + status, recv_mail)
+    send_email(s, msg)
+
+
+def main_method(url_for_test):
+    while(True):
+        status = get_status(url_for_test)
+        ts = time.time()
+        st = datetime.datetime.fromtimestamp(ts). \
+            strftime('%Y-%m-%d %H:%M:%S')
+        if status != 200:
+            print_status_and_send_mail(status, st)
+        else:
+            print(st + " | Is OK")
+        time.sleep(300)
