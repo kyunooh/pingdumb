@@ -13,7 +13,13 @@ def smtp_login_test(server, username, password):
     s.login(username, password)
     s.quit()
     print("SMTP Login Success!!")
+    pass
 
+
+def smtp_login_with_conf_test(conf):
+    smtp_login_test(conf["smtpServer"], conf["smtpUser"], conf["smtpPw"])
+    pass
+    
 
 def smtp_login(server, username, password):
     s = smtplib.SMTP(server)
@@ -35,8 +41,10 @@ def smtp_login_with_conf(conf):
     s = smtp_login(conf["smtpServer"], conf["smtpUser"], conf["smtpPw"])
     return s
 
+
 def send_status_mail(conf, msg):
     s = smtp_login_with_conf(conf)
     send_email(s, msg)
     s.quit()
     pass
+

@@ -71,6 +71,7 @@ def set_config():
     configure["smtpServer"] = s_server
     configure["smtpUser"] = s_user
     configure["smtpPw"] = s_pw
+
     return configure
 
 
