@@ -24,9 +24,9 @@ def print_status(status, st):
     print(st + " | Status is " + status)
 
 
-def checker(url_for_test, conf):
+def checker(conf):
     while(True):
-        status = get_status(conf["ur
+        status = get_status(conf["url"])
         st = get_strftime()
         print_status(status, st)
         if status != 200:
@@ -34,9 +34,6 @@ def checker(url_for_test, conf):
             send_status_mail(conf, msg)
         time.sleep(300)
 
-
-
-        
 
 def get_strftime():
     ts = time.time()
