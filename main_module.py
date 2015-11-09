@@ -21,7 +21,7 @@ def url_type(url):
 
 
 def print_status(status, st):
-    print(st + " | Status is " +str(status))
+    print(st + " | Status is " + str(status))
 
 
 def checker(conf):
