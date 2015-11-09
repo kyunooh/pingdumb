@@ -1,5 +1,6 @@
 import getpass
 import json
+from builtins import input
 from genericpath import isfile
 from os.path import sep
 
@@ -21,7 +22,7 @@ def read_config():
         return conf
     else:
         f = open(f_path, 'r+b')
-        conf = json.loads(f.read())
+        conf = json.loads(f.read().decode('utf-8'))
         f.close()
         return conf
 
@@ -37,7 +38,7 @@ def write_config(conf):
 
 
 def input_conf(message, default):
-    value = raw_input(message)
+    value = input(message)
     if not value:
         return default
     return value
