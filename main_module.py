@@ -1,5 +1,5 @@
-import datetime.datetime
 import time
+from datetime import datetime
 from urllib2 import urlopen
 
 from smtp_module import form_msg, send_status_mail
