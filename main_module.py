@@ -1,6 +1,7 @@
+import datetime
 import time
-from datetime import datetime
-from urllib2 import urlopen
+from future.moves.urllib.request import urlopen
+
 
 from smtp_module import form_msg, send_status_mail
 
@@ -21,7 +22,7 @@ def url_type(url):
 
 
 def print_status(status, st):
-    print(st + " | Status is " + status)
+    print(st + " | Status is " + str(status))
 
 
 def checker(conf):
@@ -37,6 +38,6 @@ def checker(conf):
 
 def get_strftime():
     ts = time.time()
-    return datetime.fromtimestamp(ts). \
+    return datetime.datetime.fromtimestamp(ts). \
         strftime('%Y-%m-%d %H:%M:%S')
 
