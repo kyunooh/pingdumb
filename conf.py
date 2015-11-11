@@ -15,7 +15,8 @@ def read_config():
             "url": "jellyms.kr",
             "smtpServer": "smtp.gmail.com:587",
             "smtpUser": "",
-            "toEmail": ""
+            "toEmail": "",
+            "interval": 300,
         }
         f.write(json.dumps(conf))
         f.close()
@@ -66,12 +67,18 @@ def set_config():
     )
     s_pw = getpass.getpass("SMTP Server password?", "")
 
+    interval = input_conf(
+        "interval of seconds? (" + configure["interval"] + ")", 300
+    )
+    interval = int(interval)
+    
     configure["url"] = url_for_test
     configure["toEmail"] = recv_mail
 
     configure["smtpServer"] = s_server
     configure["smtpUser"] = s_user
     configure["smtpPw"] = s_pw
+    configure["interval"] = interval
 
     return configure
 
@@ -80,4 +87,4 @@ def configure_to_tuple():
     configure = read_config()
 
     return configure["url"], configure["smtpServer"], \
-        configure["smtpUser"], configure["toEmail"]
+        configure["smtpUser"], configure["toEmail"], configure["interval"]
