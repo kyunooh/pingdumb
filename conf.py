@@ -52,16 +52,16 @@ def set_config():
     )
     url_for_test = url_type(url_for_test)
 
-    recv_mail = input_conf(
+    recv_mail = raw_input(
         "Receive mail? (" + configure["toEmail"] + ")",
         configure["toEmail"]
     )
 
-    s_server = input_conf(
+    s_server = raw_input(
         "SMTP server? (" + configure["smtpServer"] + ")",
         configure["smtpServer"]
     )
-    s_user = input_conf(
+    s_user = raw_input(
         "SMTP Server username? (" + configure["smtpUser"] + ")",
         configure["smtpUser"]
     )
