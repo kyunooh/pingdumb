@@ -52,23 +52,24 @@ def set_config():
     )
     url_for_test = url_type(url_for_test)
 
-    recv_mail = raw_input(
+    recv_mail = input_conf(
         "Receive mail? (" + configure["toEmail"] + ")",
         configure["toEmail"]
     )
 
-    s_server = raw_input(
+    s_server = input_conf(
         "SMTP server? (" + configure["smtpServer"] + ")",
         configure["smtpServer"]
     )
-    s_user = raw_input(
+    s_user = input_conf(
         "SMTP Server username? (" + configure["smtpUser"] + ")",
         configure["smtpUser"]
     )
     s_pw = getpass.getpass("SMTP Server password?", "")
 
     interval = input_conf(
-        "interval of seconds? (" + configure["interval"] + ")", 300
+        "interval of seconds? (" + str(configure["interval"]) + ")",
+        configure["interval"]
     )
     interval = int(interval)
     

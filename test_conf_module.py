@@ -2,7 +2,7 @@ import unittest
 
 import mock
 
-from pingdumb.conf import input_conf, read_config, set_config, write_config
+from conf import input_conf, read_config, set_config, write_config
 
 
 class ConfTest(unittest.TestCase):
