@@ -33,7 +33,7 @@ def checker(conf):
         if status != 200:
             msg = form_msg(st + "\nHttp status is " + status, conf["toEmail"])
             send_status_mail(conf, msg)
-        time.sleep(300)
+        time.sleep(conf['interval'])
 
 
 def get_strftime():
