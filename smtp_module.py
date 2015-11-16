@@ -4,7 +4,6 @@ from email.mime.text import MIMEText
 
 def send_email(s, msg):
     s.sendmail(msg["From"], msg["To"], msg.as_string())
-    s.quit()
 
 
 def smtp_login_test(server, username, password):
@@ -46,5 +45,5 @@ def send_status_mail(conf, msg):
     s = smtp_login_with_conf(conf)
     send_email(s, msg)
     s.quit()
-    pass
+
 
