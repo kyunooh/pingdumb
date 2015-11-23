@@ -5,7 +5,7 @@ from main_module import checker
 from conf import set_config, write_config, read_config
 
 
-if __name__ == "__main__":
+def main(argv):
 
     if len(sys.argv) == 1:
         conf = set_config()
@@ -20,3 +20,6 @@ if __name__ == "__main__":
     smtp_login_with_conf_test(conf)
 
     checker(conf)
+
+if __name__ == "__main__":
+    main(sys.argv[1:])
