@@ -24,9 +24,12 @@ Receive mail? (chm073@gmail.com)
 SMTP server? (smtp.gmail.com:587)
 SMTP Server username? (jellymsblog)
 SMTP Server password?
-interval of seconds? (300)
-</pre></code>
+interval of seconds? (300)</pre></code>
 <p>위와 같이 콘솔로 값을 설정해 주시면 200(OK)이 아닐경우에 메일을 보내도록 구현하였습니다.</p>
+
+<p>기본 설정값에서 패스워드만 입력하고 싶을때는 p 옵션을 주면 됩니다.</p>
+<code><pre>python pingdumb.py -p
+SMTP Server password?</pre></code>
 
 <h4>개선해야 할 점</h4>
 
