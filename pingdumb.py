@@ -1,8 +1,7 @@
-import getopt
-import getpass
 import sys
 
-from conf import read_config, set_config, write_config
+from conf import read_config, set_config, \
+    write_config, extract_password_with_argv
 from main_module import checker
 from smtp_module import smtp_login_with_conf_test
 
@@ -15,14 +14,7 @@ def main(argv):
         write_config(conf)
     else:
         """if exist argv, set password and execute with default configure"""
-        opts, args = getopt.getopt(argv, 'p')
-        for o, a in opts:
-            if o == "-p":
-                if a == "":
-                    s_pw = getpass.getpass("SMTP Server password", "")
-                else:
-                    s_pw = a
-
+        s_pw = extract_password_with_argv(argv)
         conf = read_config()
         
     conf["smtpPw"] = s_pw

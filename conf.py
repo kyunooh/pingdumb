@@ -1,5 +1,6 @@
 import getpass
 import json
+import getopt
 from builtins import input
 from genericpath import isfile
 from os.path import sep
@@ -89,3 +90,13 @@ def configure_to_tuple():
 
     return configure["url"], configure["smtpServer"], \
         configure["smtpUser"], configure["toEmail"], configure["interval"]
+
+        
+def extract_password_with_argv(argv):
+    opts, args = getopt.getopt(argv, 'p')
+    for o, a in opts:
+            if o == "-p":
+                return getpass.getpass("SMTP Server password", "")
+           
+
+    
