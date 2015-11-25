@@ -18,21 +18,14 @@
 <h3>사용방법</h3>
 
 <p>프로젝트를 복사한 뒤&nbsp;</p>
-
-<p><code>python pingdumb.py</code></p>
-
-<p><code>URL to test? (http://jellyms.kr)</code></p>
-
-<p><code>Receive mail? (chm073@gmail.com)</code></p>
-
-<p><code>SMTP server? (smtp.gmail.com:587)</code></p>
-
-<p><code>SMTP Server username? (jellymsblog)</code></p>
-
-<p><code>SMTP Server password?</code></p>
-
-<p><code>interval of seconds? (300)</code></p>
-
+<code><pre>python pingdumb.py
+URL to test? (http://jellyms.kr)
+Receive mail? (chm073@gmail.com)
+SMTP server? (smtp.gmail.com:587)
+SMTP Server username? (jellymsblog)
+SMTP Server password?
+interval of seconds? (300)
+</pre></code>
 <p>위와 같이 콘솔로 값을 설정해 주시면 200(OK)이 아닐경우에 메일을 보내도록 구현하였습니다.</p>
 
 <h4>개선해야 할 점</h4>
