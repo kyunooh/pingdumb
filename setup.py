@@ -4,7 +4,7 @@ from distutils.core import setup
 setup(
     name = 'pingdumb',
     packages = ['pingdumb'],
-    version = '0.1',
+    version = '0.1.1',
     description = 'Check http status on console',
     author = 'Hyeon-Mook Jerry Choi',
     author_email = 'chm073@gmail.com',
