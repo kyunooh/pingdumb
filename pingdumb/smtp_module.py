@@ -7,17 +7,13 @@ def send_email(s, msg):
 
 
 def smtp_login_test(server, username, password):
-    s = smtplib.SMTP(server)
-    s.starttls()
-    s.login(username, password)
+    s = smtp_login(server, username, password)
     s.quit()
     print("SMTP Login Success!!")
-    pass
 
 
 def smtp_login_with_conf_test(conf):
     smtp_login_test(conf["smtpServer"], conf["smtpUser"], conf["smtpPw"])
-    pass
     
 
 def smtp_login(server, username, password):
