@@ -26,7 +26,7 @@ def smtp_login(server, username, password):
 def form_msg(text, to):
     our_application = "pingdumb"
     msg = MIMEText(text, _subtype="plain", _charset="utf-8")
-    msg['Subject'] = 'The contents of %s' % text
+    msg['Subject'] = '%s' % text
     msg['From'] = our_application
     msg['To'] = to
     return msg
