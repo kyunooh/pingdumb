@@ -1,9 +1,9 @@
 import sys
 
-from conf import read_config, set_config, \
+from pingdumb.conf import read_config, set_config, \
     write_config, extract_password_with_argv
-from main_module import checker
-from smtp_module import smtp_login_with_conf_test
+from pingdumb.main_module import checker
+from pingdumb.smtp_module import smtp_login_with_conf_test
 
 
 def main(argv):
