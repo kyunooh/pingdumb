@@ -5,7 +5,7 @@ from builtins import input
 from genericpath import isfile
 from os.path import sep
 
-from main_module import url_type
+from pingdumb.main_module import url_type
 
 
 def read_config():
