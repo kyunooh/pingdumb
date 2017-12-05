@@ -1,7 +1,6 @@
 import getpass
 import json
 import getopt
-from builtins import input
 from genericpath import isfile
 from os.path import sep
 

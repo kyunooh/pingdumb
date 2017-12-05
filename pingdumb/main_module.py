@@ -1,6 +1,6 @@
 import datetime
 import time
-from future.moves.urllib.request import urlopen
+from urllib.request import urlopen
 
 
 from pingdumb.smtp_module import form_msg, send_status_mail
